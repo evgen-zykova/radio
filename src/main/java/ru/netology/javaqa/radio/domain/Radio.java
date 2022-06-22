@@ -17,20 +17,20 @@ public class Radio {
         return currentVolumeSound;
     }
 
-    public int changeLastRadioStation() {
-        if (numberCurrentRadioStation > maxNumberRadioStation) {
-            numberCurrentRadioStation = minNumberRadioStation;
+    public int setChangeLastRadioStation(int newNumberCurrentRadioStation) {
+        if (newNumberCurrentRadioStation < maxNumberRadioStation) {
+            numberCurrentRadioStation = newNumberCurrentRadioStation + 1;
         } else {
-            numberCurrentRadioStation = numberCurrentRadioStation + 1;
+            numberCurrentRadioStation = minNumberRadioStation;
         }
-        return numberCurrentRadioStation;
+        return newNumberCurrentRadioStation;
     }
 
-    public int switchToThePreviousRadioStation() {
-        if (numberCurrentRadioStation < minNumberRadioStation) {
-            numberCurrentRadioStation = maxNumberRadioStation;
+    public int setSwitchToThePreviousRadioStation(int newNumberCurrentRadioStation) {
+        if (newNumberCurrentRadioStation > minNumberRadioStation) {
+            numberCurrentRadioStation = newNumberCurrentRadioStation - 1;
         } else {
-            numberCurrentRadioStation = numberCurrentRadioStation - 1;
+            numberCurrentRadioStation = maxNumberRadioStation;
         }
         return numberCurrentRadioStation;
     }
@@ -45,18 +45,19 @@ public class Radio {
         numberCurrentRadioStation = newNumberCurrentRadioStation;
     }
 
-    public void setIncreaseVolumeMax(int newCurrentVolumeSound) {
-        if (newCurrentVolumeSound > maxVolume) {
-            return;
+
+    public void setUpVolume(int newCurrentVolumeSound) {
+        if (newCurrentVolumeSound < maxVolume) {
+            currentVolumeSound = newCurrentVolumeSound + 1;
         }
-        currentVolumeSound = newCurrentVolumeSound + 1;
+
     }
 
     public void setDownVolume(int newCurrentVolumeSound) {
-        if (newCurrentVolumeSound < minVolume) {
-            return;
+        if (newCurrentVolumeSound > minVolume) {
+            currentVolumeSound = newCurrentVolumeSound - 1;
         }
-        currentVolumeSound = newCurrentVolumeSound - 1;
+
     }
 
 }
