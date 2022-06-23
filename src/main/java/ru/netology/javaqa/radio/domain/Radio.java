@@ -1,12 +1,12 @@
 package ru.netology.javaqa.radio.domain;
 
 public class Radio {
-    public int numberCurrentRadioStation;
-    public int currentVolumeSound;
-    public int maxNumberRadioStation = 9;
-    public int minNumberRadioStation = 0;
-    public int maxVolume = 10;
-    public int minVolume = 0;
+    private int numberCurrentRadioStation;
+    private int currentVolumeSound;
+    private int maxNumberRadioStation = 9;
+    private int minNumberRadioStation = 0;
+    private int maxVolume = 10;
+    private int minVolume = 0;
 
 
     public int getNumberCurrentRadioStation() {
@@ -17,22 +17,20 @@ public class Radio {
         return currentVolumeSound;
     }
 
-    public int setChangeLastRadioStation(int newNumberCurrentRadioStation) {
-        if (newNumberCurrentRadioStation < maxNumberRadioStation) {
-            numberCurrentRadioStation = newNumberCurrentRadioStation + 1;
+    public void changeLastRadioStation() {
+        if (numberCurrentRadioStation < maxNumberRadioStation) {
+            numberCurrentRadioStation = numberCurrentRadioStation + 1;
         } else {
             numberCurrentRadioStation = minNumberRadioStation;
         }
-        return newNumberCurrentRadioStation;
     }
 
-    public int setSwitchToThePreviousRadioStation(int newNumberCurrentRadioStation) {
-        if (newNumberCurrentRadioStation > minNumberRadioStation) {
-            numberCurrentRadioStation = newNumberCurrentRadioStation - 1;
+    public void switchToThePreviousRadioStation() {
+        if (numberCurrentRadioStation > minNumberRadioStation) {
+            numberCurrentRadioStation = numberCurrentRadioStation - 1;
         } else {
             numberCurrentRadioStation = maxNumberRadioStation;
         }
-        return numberCurrentRadioStation;
     }
 
     public void setNumberCurrentRadioStation(int newNumberCurrentRadioStation) {
@@ -45,17 +43,27 @@ public class Radio {
         numberCurrentRadioStation = newNumberCurrentRadioStation;
     }
 
-
-    public void setUpVolume(int newCurrentVolumeSound) {
-        if (newCurrentVolumeSound < maxVolume) {
-            currentVolumeSound = newCurrentVolumeSound + 1;
+    public void setCurrentVolumeSound(int newCurrentVolumeSound) {
+        if (newCurrentVolumeSound > maxVolume) {
+            return;
         }
-
+        if (newCurrentVolumeSound < minVolume) {
+            return;
+        }
+        currentVolumeSound = newCurrentVolumeSound;
     }
 
-    public void setDownVolume(int newCurrentVolumeSound) {
-        if (newCurrentVolumeSound > minVolume) {
-            currentVolumeSound = newCurrentVolumeSound - 1;
+
+
+    public void upVolume() {
+        if (currentVolumeSound < maxVolume) {
+            currentVolumeSound = currentVolumeSound + 1;
+        }
+    }
+
+    public void downVolume() {
+        if (currentVolumeSound > minVolume) {
+            currentVolumeSound = currentVolumeSound - 1;
         }
 
     }

@@ -20,28 +20,33 @@ public class RadioTest {
 
     public void switchLastRadioStation() {
         Radio cond = new Radio();
-        cond.setChangeLastRadioStation(9);
+        cond.setNumberCurrentRadioStation(9);
+        cond.changeLastRadioStation();
         int expected = 0;
         int actual = cond.getNumberCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
 
     }
+
     @Test
     public void switchToTheNextStation() {
         Radio cond = new Radio();
-        cond.setChangeLastRadioStation(5);
+        cond.setNumberCurrentRadioStation(5);
+        cond.changeLastRadioStation();
         int expected = 6;
         int actual = cond.getNumberCurrentRadioStation();
 
         Assertions.assertEquals(expected, actual);
 
     }
+
     @Test
 
     public void previousRadioStation() {
         Radio cond = new Radio();
-        cond.setSwitchToThePreviousRadioStation(0);
+        cond.setNumberCurrentRadioStation(0);
+        cond.switchToThePreviousRadioStation();
         int expected = 9;
         int actual = cond.getNumberCurrentRadioStation();
 
@@ -51,7 +56,8 @@ public class RadioTest {
     @Test
     public void goToThePreviousStation() {
         Radio cond = new Radio();
-        cond.setSwitchToThePreviousRadioStation(8);
+        cond.setNumberCurrentRadioStation(8);
+        cond.switchToThePreviousRadioStation();
         int expected = 7;
         int actual = cond.getNumberCurrentRadioStation();
 
@@ -99,10 +105,10 @@ public class RadioTest {
     @Test
 
     public void soundReachedMax() {
-
         Radio cond = new Radio();
-        cond.setUpVolume(11);
-        int expected = 0;
+        cond.setCurrentVolumeSound(10);
+        cond.upVolume();
+        int expected = 10;
         int actual = cond.getCurrentVolumeSound();
 
         Assertions.assertEquals(expected, actual);
@@ -112,7 +118,8 @@ public class RadioTest {
 
     public void increaseCurrentVolume() {
         Radio cond = new Radio();
-        cond.setUpVolume(5);
+        cond.setCurrentVolumeSound(5);
+        cond.upVolume();
         int expected = 6;
         int actual = cond.getCurrentVolumeSound();
 
@@ -124,7 +131,8 @@ public class RadioTest {
     public void soundReachedMin() {
 
         Radio cond = new Radio();
-        cond.setDownVolume(0);
+        cond.setCurrentVolumeSound(0);
+        cond.downVolume();
         int expected = 0;
         int actual = cond.getCurrentVolumeSound();
 
@@ -137,8 +145,33 @@ public class RadioTest {
     public void decreaseCurrentVolume() {
 
         Radio cond = new Radio();
-        cond.setDownVolume(8);
+        cond.setCurrentVolumeSound(8);
+        cond.downVolume();
         int expected = 7;
+        int actual = cond.getCurrentVolumeSound();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+
+    public void currentVolumeSoundMoreMax() {
+        Radio cond = new Radio();
+        cond.setCurrentVolumeSound(11);
+
+        int expected = 0;
+        int actual = cond.getCurrentVolumeSound();
+
+        Assertions.assertEquals(expected, actual);
+
+    }
+
+    @Test
+
+    public void currentVolumeSoundLessMin() {
+        Radio cond = new Radio();
+        cond.setCurrentVolumeSound(-1);
+
+        int expected = 0;
         int actual = cond.getCurrentVolumeSound();
 
         Assertions.assertEquals(expected, actual);
