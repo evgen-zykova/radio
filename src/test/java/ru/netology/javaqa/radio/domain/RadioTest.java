@@ -182,31 +182,10 @@ public class RadioTest {
     @Test
 
     public void currentStation() {
-        Radio cond = new Radio(5, 30, 9, 0);
+        Radio cond = new Radio(20);
+        cond.setNumberCurrentRadioStation(15);
 
-        Assertions.assertEquals(5, cond.getNumberCurrentRadioStation());
+        Assertions.assertEquals(15, cond.getNumberCurrentRadioStation());
     }
-
-    @Test
-
-    public void currentVolume() {
-        Radio cond = new Radio(5, 30, 9, 0);
-       Assertions.assertEquals( 30, cond.getCurrentVolumeSound());
-
-    }
-    @Test
-
-    public void maxAmountStation() {
-        Radio cond = new Radio(5, 30, 9, 0);
-        Assertions.assertEquals(9, cond.getMaxNumberRadioStation());
-    }
-
-    @Test
-
-    public void minAmountStation() {
-        Radio cond = new Radio(5, 30, 9, 0);
-        Assertions.assertEquals(0, cond.getMinNumberRadioStation());
-    }
-
 }
 
