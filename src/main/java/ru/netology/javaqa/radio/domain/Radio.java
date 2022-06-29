@@ -1,13 +1,17 @@
 package ru.netology.javaqa.radio.domain;
 
 public class Radio {
+
     private int numberCurrentRadioStation;
     private int currentVolumeSound;
-    private int maxNumberRadioStation = 9;
+    private int maxNumberRadioStation;
     private int minNumberRadioStation = 0;
-    private int maxVolume = 10;
+    private int maxVolume = 100;
     private int minVolume = 0;
 
+    public Radio() {
+        maxNumberRadioStation = 9;
+    }
 
     public int getNumberCurrentRadioStation() {
         return numberCurrentRadioStation;
@@ -15,6 +19,11 @@ public class Radio {
 
     public int getCurrentVolumeSound() {
         return currentVolumeSound;
+    }
+
+
+    public Radio(int numberCurrentRadioStation) {
+        maxNumberRadioStation = numberCurrentRadioStation - 1;
     }
 
     public void changeLastRadioStation() {
@@ -52,7 +61,6 @@ public class Radio {
         }
         currentVolumeSound = newCurrentVolumeSound;
     }
-
 
 
     public void upVolume() {
